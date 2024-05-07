@@ -59,7 +59,7 @@ map.on("moveend", (e) => {
 // const backToVn = document.getElementById("back-to-vn");
 // const zoomHn = document.getElementById("zoom-hn");
 
-// Xử lý sự kiện khi nút Vietnam được nhấp
+// Xử lý sự kiện khi click Vietnam
 document.getElementById("back-to-vn").addEventListener('click', function () {
   map.flyTo({
     center: [106.9230, 16.84769],
@@ -77,7 +77,7 @@ document.getElementById("back-to-vn").addEventListener('click', function () {
   }
 });
 
-// Xử lý sự kiện khi nút Ha Noi được click
+// Xử lý sự kiện khi click Ha Noi
 document.getElementById("zoom-hn").addEventListener('click', function () {
 
   const HaNoiBoundary = './boundaries/hanoi.geojson'
@@ -208,6 +208,7 @@ function geocodeAddress(address) {
 
 document.addEventListener("DOMContentLoaded", () => {
   const inputField = document.getElementById("input");
+
   inputField.addEventListener("keydown", function (e) {
     if (e.code === "Enter") {
       let input = inputField.value.trim();
@@ -228,6 +229,26 @@ document.addEventListener("DOMContentLoaded", () => {
       inputField.value = "";
     }
   });
+
+  document.getElementById("btn_sendMessage").addEventListener("click", function () {
+    let input = inputField.value.trim();
+
+    if (input != "") {
+      var divItem = document.createElement('div');
+      divItem.className = 'w-full';
+      divItem.innerHTML = `
+          <div class="flex items-center justify-end w-full mb-1 space-x-2">
+            <h1 class="p-2 rounded-2xl text-white bg-blue-500 text-[14.5px] break-words" style="max-width: 230px;">${input}</h1>
+          </div>
+        `;
+      document.getElementById('list_message').appendChild(divItem);
+      var messageContainer = document.getElementById('list_message');
+      messageContainer.scrollTop = messageContainer.scrollHeight;
+      geocodeAddress(input);
+    }
+    inputField.value = "";
+  });
+
 
   document.getElementById('reload').addEventListener('click', function () {
     resetMessageList();
