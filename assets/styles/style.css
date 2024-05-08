@@ -22,7 +22,7 @@
     top: 1rem;
     z-index: 10;
     background-color: #fff;
-    transition:left  1s ease;
+    transition: left 1s ease;
 }
 
 .right-panel {
@@ -52,7 +52,7 @@
     justify-content: center;
 }
 
-#style-map{
+#style-map {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -63,6 +63,13 @@
     border-radius: 5px;
 }
 
-.my-class{
+.my-class {
     width: 150px;
+}
+
+.mapboxgl-popup-close-button {
+    padding: 5px;
+    margin: 3px;
+    font-size: larger;
+    outline: none;
 }
